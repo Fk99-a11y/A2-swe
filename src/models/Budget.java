@@ -1,4 +1,4 @@
-package models;
+package src.models;
 /**
  * Manages monthly spending limits and monitors current expenditures.
  */

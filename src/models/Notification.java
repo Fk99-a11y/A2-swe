@@ -1,4 +1,4 @@
-package models;
+package src.models;
 import java.util.Date;
 /**
  * Handles system alerts and messages sent to the user.

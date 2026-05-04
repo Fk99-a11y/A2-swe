@@ -1,4 +1,4 @@
-package models;
+package src.models;
 import java.util.Date;
 /**
  * Represents money earned by the user from various sources.

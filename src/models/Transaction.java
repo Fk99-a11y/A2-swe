@@ -1,4 +1,4 @@
-package models;
+package src.models;
 import java.util.Date;
 /**
  * An abstract base class for all financial movements (Income and Expense).

@@ -1,5 +1,5 @@
 
-package models;
+package src.models;
 /**
  * Defines a classification for transactions (e.g., Food, Rent).
  */

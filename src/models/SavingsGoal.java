@@ -1,4 +1,4 @@
-package models;
+package src.models;
 /**
  * Tracks financial goals and calculates progress towards a target amount.
  */

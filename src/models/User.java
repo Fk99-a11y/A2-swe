@@ -1,4 +1,4 @@
-package models;
+package src.models;
 /**
  * Represents a system user and manages their total financial balance.
  */

@@ -1,4 +1,4 @@
-package models;
+package src.models;
 import java.util.Date;
 /**
  * Represents money spent by the user on specific categories.
