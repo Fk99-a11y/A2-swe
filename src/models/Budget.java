@@ -1,8 +1,10 @@
 package src.models;
+
 /**
  * Manages monthly spending limits and monitors current expenditures.
  */
 public class Budget {
+
     private int budgetId;
     private double limitAmount;
     private double currentSpending;
@@ -14,16 +16,45 @@ public class Budget {
         this.month = month;
         this.currentSpending = 0.0;
     }
+
+    // ================= Getters =================
+
+    public int getBudgetId() {
+        return budgetId;
+    }
+
+    public double getLimitAmount() {
+        return limitAmount;
+    }
+
+    public double getCurrentSpending() {
+        return currentSpending;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    // ================= Logic =================
+
     /**
-     * Checks if the current spending has exceeded the pre-defined limit.
-     * @return true if current spending is greater than the limit amount.
+     * Add expense amount to current spending
+     */
+    public void addSpending(double amount) {
+        if (amount > 0) {
+            this.currentSpending += amount;
+        }
+    }
+
+    /**
+     * Checks if budget exceeded limit
      */
     public boolean checkLimit() {
         return currentSpending > limitAmount;
     }
+
     /**
-     * Calculates the remaining money available in the budget.
-     * @return The difference between the limit and current spending.
+     * Remaining budget
      */
     public double getRemainingAmount() {
         return limitAmount - currentSpending;
