@@ -110,3 +110,23 @@ public class TransactionRepository extends BaseRepository<Transaction> {
         return result;
     }
 }
+// ADD Transaction
+public void addTransaction(Transaction transaction) {
+    add(transaction); // من BaseRepository
+}
+
+// DELETE by ID
+public void deleteTransaction(int id) {
+    items.removeIf(t -> t.getTransactionId() == id);
+    save();
+}
+
+// GET by ID
+public Transaction getById(int id) {
+    for (Transaction t : items) {
+        if (t.getTransactionId() == id) {
+            return t;
+        }
+    }
+    return null;
+}
