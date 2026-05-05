@@ -1,13 +1,31 @@
-import  src.models.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import src.models.*;
 import src.utils.JsonHandler;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.io.File;
 
-public class main {
-    public static void main(String[] args) {
-        // 1. Prepare data folder
+import src.ui.LoginScreen;
+import src.controllers.AppContext;
+
+public class main extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+       
+        LoginScreen loginScreen = new LoginScreen();
+        loginScreen.start(stage);
+    }
+
+   
+    public static void demoData() {
+
         File folder = new File("data");
         if (!folder.exists()) {
             folder.mkdir();
@@ -15,21 +33,17 @@ public class main {
 
         System.out.println("--- Personal Finance Management System ---");
 
-        // 2. Create a User with initial balance of 1000.0
         User user = new User(1, "Ahmed Ali", "ahmed@gmail.com", 1000.0);
         System.out.println("Initial Balance: " + user.getBalance());
 
-        // 3. Create a list to store transactions
         List<Transaction> transactions = new ArrayList<>();
 
-        // 4. Add an Income transaction (e.g., Salary)
         Income salary = new Income(101, 500.0, new Date(), "Freelance Project", "Software Development");
         transactions.add(salary);
-        user.updateBalance(500.0); // Updating user balance
+        user.updateBalance(500.0);
         System.out.println("Income Added: 500.0. New Balance: " + user.getBalance());
 
-        // 5. Add an Expense transaction (e.g., Food)
-        Expense lunch = new Expense(102, 200.0, new Date(), "Lunch at Pizza Hut", 3); // Category 3 = Food
+        Expense lunch = new Expense(102, 200.0, new Date(), "Lunch at Pizza Hut", 3);
         transactions.add(lunch);
         user.updateBalance(-200.0);
         System.out.println("Expense Added: 200.0. Final Balance: " + user.getBalance());
@@ -39,5 +53,9 @@ public class main {
 
         System.out.println("------------------------------------");
         System.out.println("Success! Data has been saved to the 'data' folder.");
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
