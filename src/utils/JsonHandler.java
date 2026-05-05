@@ -40,4 +40,45 @@ public class JsonHandler {
             return null;
         }
     }
+
+    // ========== Added for Backend Core ==========
+    
+    private static final String DATA_DIR = "src/main/resources/data/";
+
+    // Ensure data directory exists
+    public static void ensureDataDirectoryExists() {
+        java.io.File dir = new java.io.File(DATA_DIR);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
+    // Save list to file (for repositories)
+    public static <T> void saveListToFile(String fileName, List<T> data) {
+        ensureDataDirectoryExists();
+        String fullPath = DATA_DIR + fileName;
+        try (FileWriter writer = new FileWriter(fullPath)) {
+            gson.toJson(data, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Load list from file with Class type (easier for repositories)
+    public static <T> List<T> loadListFromFile(String fileName, Class<T> classType) {
+        ensureDataDirectoryExists();
+        String fullPath = DATA_DIR + fileName;
+        java.io.File file = new java.io.File(fullPath);
+        if (!file.exists()) {
+            return new java.util.ArrayList<>();
+        }
+        try (FileReader reader = new FileReader(fullPath)) {
+            Type type = TypeToken.getParameterized(List.class, classType).getType();
+            List<T> result = gson.fromJson(reader, type);
+            return result != null ? result : new java.util.ArrayList<>();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new java.util.ArrayList<>();
+        }
+    }
 }
