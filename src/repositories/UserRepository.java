@@ -8,7 +8,7 @@ import src.utils.JsonHandler;
  */
 public class UserRepository {
 
-private static final String FILE_NAME = "user_profile.json";
+private static final String FILE_NAME = "data/user_profile.json";
     private User currentUser;
 
     public UserRepository() {
