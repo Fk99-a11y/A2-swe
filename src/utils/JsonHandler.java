@@ -43,7 +43,7 @@ public class JsonHandler {
 
     // ========== Added for Backend Core ==========
     
-    private static final String DATA_DIR = "src/main/resources/data/";
+    private static final String DATA_DIR = "data/";
 
     // Ensure data directory exists
     public static void ensureDataDirectoryExists() {
